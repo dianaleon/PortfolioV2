@@ -1,5 +1,7 @@
 package com.portfolio;
 
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,7 +43,8 @@ public class MainActivity extends Activity implements IPortfolioListener{
 	public void onPortfolioReady() {
 		PortfolioModel portfolioModel = PortfolioModel.getInstance(this);
 		int pagesCount = portfolioModel.getNumberPages();
-		IPage pageNum1 = portfolioModel.getPageInfo(2);
+		List<String> names = portfolioModel.getPagesName();
+		IPage pageNum1 = portfolioModel.getPageInfo(1);
 		switch (pageNum1.getType()) {
 			case IPage.type_text:
 				ITextPage textPage = (ITextPage) pageNum1;

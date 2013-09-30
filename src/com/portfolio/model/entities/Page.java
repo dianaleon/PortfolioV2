@@ -19,6 +19,10 @@ public abstract class  Page extends CustomThemeWindow implements IPage {
 	public String getName() {
 		return name;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
 	@Override
 	public int getPosition() {

@@ -1,6 +1,8 @@
 package com.portfolio.model;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -54,6 +56,18 @@ public class PortfolioModel {
 
 	public IPage getPageInfo(int numberPage) {
 		return portfolio.getPage(numberPage);
+	}
+	
+	public List<String> getPagesName() {
+		List<String> names = new ArrayList<String>();
+		if (portfolio != null) {
+			List<IPage> pages = portfolio.getPages();
+			for (int index = 0; index < pages.size(); index++) {
+				IPage page = (IPage) pages.get(index);
+				names.add(page.getName());
+			}
+		}
+		return names;
 	}
 
 	public void getMedia(final IPortfolioListener callback, final String url) {

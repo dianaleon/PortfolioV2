@@ -19,22 +19,22 @@ public class Portfolio {
             for (int index = 0; index < pages.length(); index++) {
             	JSONObject page = pages.getJSONObject(index);
             	JSONObject type = page.getJSONObject("type");
+            	IPage pageObject = null;
             	if (type.getString("code").equalsIgnoreCase("text")) {
-            		TextPage textPage = new TextPage(page);
-            		this.pages.add(textPage);
+            		pageObject = new TextPage(page);
             	}
             	if (type.getString("code").equalsIgnoreCase("photos-gallery")) {
-            		PhotoGaleryPage photoGaleryPage = new PhotoGaleryPage(page);
-            		this.pages.add(photoGaleryPage);
+            		pageObject = new PhotoGaleryPage(page);
             	}
             	if (type.getString("code").equalsIgnoreCase("contact")) {
-            		ContactPage contactPage = new ContactPage(page);
-            		this.pages.add(contactPage);
+            		pageObject = new ContactPage(page);
             	}
             	if (type.getString("code").equalsIgnoreCase("network")) {
-            		NetworkPage networkPage = new NetworkPage(page);
-            		this.pages.add(networkPage);
+            		pageObject = new NetworkPage(page);
             	}
+            	String namePage = page.getString("name");
+            	((Page) pageObject).setName(namePage);
+        		this.pages.add(pageObject);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -47,5 +47,13 @@ public class Portfolio {
 
 	public IPage getPage(int numberPage) {
 		return pages.get(numberPage - 1);
+	}
+
+	public List<IPage> getPages() {
+		return pages;
+	}
+
+	public void setPages(List<IPage> pages) {
+		this.pages = pages;
 	}
 }
