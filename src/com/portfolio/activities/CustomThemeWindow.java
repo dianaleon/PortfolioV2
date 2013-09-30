@@ -23,7 +23,7 @@ public class CustomThemeWindow extends Activity {
        
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.window_title);
         
-        title = (TextView) findViewById(R.id.title);
-        subTitle  = (TextView) findViewById(R.id.subTitle);
+        //title = (TextView) findViewById(R.id.title);
+        //subTitle  = (TextView) findViewById(R.id.subTitle);
 	}
 }
